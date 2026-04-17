@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<!-- Claire Pothier | IS 201 Final Project | Mandarin Flashcards | April 2026 -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mandarin Flashcards - Claire Pothier</title>
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(180deg, #17252a 0%, #2b7a78 100%);
+      color: #eaf4f4;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.3);
+      padding: 14px 20px;
+      text-align: center;
+      border-bottom: 2px solid #c9a96e;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+      color: #c9a96e;
+      letter-spacing: 1px;
+      font-weight: 900;
+    }
+
+    header .tagline {
+      margin: 4px 0 0 0;
+      font-size: 13px;
+      font-style: italic;
+      color: #def2f1;
+    }
+
+    header a {
+      color: #c9a96e;
+      font-size: 13px;
+      text-decoration: none;
+      margin-top: 8px;
+      display: inline-block;
+    }
+
+    header a:hover { text-decoration: underline; }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 20px;
+      max-width: 600px;
+      width: 100%;
+    }
+
+    .stats {
+      display: flex;
+      gap: 18px;
+      margin-bottom: 20px;
+      font-size: 14px;
+      color: #def2f1;
+    }
+
+    .stats .pill {
+      background: rgba(0, 0, 0, 0.25);
+      padding: 6px 14px;
+      border-radius: 50px;
+      border: 1px solid rgba(201, 169, 110, 0.4);
+    }
+
+    .stats .pill b { color: #c9a96e; }
+
+    .flashcard {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      max-height: 360px;
+      background: #eaf4f4;
+      color: #17252a;
+      border-radius: 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+      cursor: pointer;
+      transition: transform 0.15s;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .flashcard:hover { transform: translateY(-2px); }
+
+    .side-label {
+      position: absolute;
+      top: 12px;
+      left: 16px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #2b7a78;
+      font-weight: 700;
+    }
+
+    .hanzi {
+      font-size: 72px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #2b7a78;
+      line-height: 1;
+    }
+
+    .pinyin {
+      font-size: 22px;
+      font-style: italic;
+      color: #c9a96e;
+      margin-bottom: 4px;
+    }
+
+    .english {
+      font-size: 32px;
+      font-weight: 700;
+      color: #17252a;
+    }
+
+    .tap-hint {
+      position: absolute;
+      bottom: 12px;
+      right: 16px;
+      font-size: 11px;
+      color: #2b7a78;
+      opacity: 0.7;
+    }
+
+    .answer-row {
+      display: flex;
+      gap: 12px;
+      width: 100%;
+      margin-top: 22px;
+    }
+
+    .answer-row button {
+      flex: 1;
+      padding: 14px 0;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.1s, opacity 0.15s;
+    }
+
+    .answer-row button:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .btn-wrong {
+      background: #c75a4c;
+      color: #fff;
+    }
+
+    .btn-right {
+      background: #c9a96e;
+      color: #17252a;
+    }
+
+    .answer-row button:hover:not(:disabled) { transform: translateY(-2px); }
+
+    .next-btn {
+      margin-top: 18px;
+      padding: 10px 24px;
+      background: transparent;
+      border: 1px solid #c9a96e;
+      color: #c9a96e;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+    }
+
+    .next-btn:hover { background: rgba(201, 169, 110, 0.15); }
+
+    footer {
+      width: 100%;
+      padding: 16px;
+      text-align: center;
+      font-size: 12px;
+      color: rgba(234, 244, 244, 0.75);
+      border-top: 1px solid rgba(201, 169, 110, 0.25);
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: #c9a96e;
+      text-decoration: none;
+      margin: 0 6px;
+    }
+
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 500px) {
+      .hanzi { font-size: 56px; }
+      .english { font-size: 24px; }
+      header h1 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Mandarin Flashcards</h1>
+    <div class="tagline">Practice basic Mandarin - Claire Pothier</div>
+    <a href="index.html">&larr; Back to Resume</a>
+  </header>
+
+  <main>
+    <div class="stats">
+      <div class="pill">Correct: <b id="stat-correct">0</b></div>
+      <div class="pill">Missed: <b id="stat-wrong">0</b></div>
+      <div class="pill">Card: <b id="stat-pos">1</b> / <b id="stat-total">0</b></div>
+    </div>
+
+    <div class="flashcard" id="card">
+      <span class="side-label" id="side-label">Mandarin</span>
+      <div class="hanzi" id="hanzi">&ndash;</div>
+      <div class="pinyin" id="pinyin">&ndash;</div>
+      <div class="english" id="english" style="display:none">&ndash;</div>
+      <div class="tap-hint">Tap card to flip</div>
+    </div>
+
+    <div class="answer-row">
+      <button class="btn-wrong" id="btn-wrong" disabled>I missed it</button>
+      <button class="btn-right" id="btn-right" disabled>I got it</button>
+    </div>
+
+    <button class="next-btn" id="reshuffle-btn">Reshuffle deck</button>
+  </main>
+
+  <footer>
+    Claire Pothier &middot; IS 201 Final Project &middot;
+    <a href="index.html">Resume</a> |
+    <a href="projects.html">Projects</a> |
+    <a href="scratch.html">Travel Page</a>
+  </footer>
+
+  <script>
+    const CARDS = [
+      { hanzi: "你好", pinyin: "nǐ hǎo", english: "hello" },
+      { hanzi: "谢谢", pinyin: "xiè xie", english: "thank you" },
+      { hanzi: "再见", pinyin: "zài jiàn", english: "goodbye" },
+      { hanzi: "请", pinyin: "qǐng", english: "please" },
+      { hanzi: "对不起", pinyin: "duì bù qǐ", english: "sorry" },
+      { hanzi: "我", pinyin: "wǒ", english: "I / me" },
+      { hanzi: "你", pinyin: "nǐ", english: "you" },
+      { hanzi: "是", pinyin: "shì", english: "is / to be" },
+      { hanzi: "爱", pinyin: "ài", english: "love" },
+      { hanzi: "朋友", pinyin: "péng you", english: "friend" },
+      { hanzi: "家", pinyin: "jiā", english: "home / family" },
+      { hanzi: "水", pinyin: "shuǐ", english: "water" },
+      { hanzi: "茶", pinyin: "chá", english: "tea" },
+      { hanzi: "吃", pinyin: "chī", english: "to eat" },
+      { hanzi: "喝", pinyin: "hē", english: "to drink" },
+      { hanzi: "大", pinyin: "dà", english: "big" },
+      { hanzi: "小", pinyin: "xiǎo", english: "small" },
+      { hanzi: "好", pinyin: "hǎo", english: "good" },
+      { hanzi: "中国", pinyin: "zhōng guó", english: "China" },
+      { hanzi: "美国", pinyin: "měi guó", english: "United States" }
+    ];
+
+    let deck = [];
+    let pos = 0;
+    let flipped = false;
+    let correct = 0;
+    let wrong = 0;
+
+    const hanziEl = document.getElementById('hanzi');
+    const pinyinEl = document.getElementById('pinyin');
+    const englishEl = document.getElementById('english');
+    const sideLabel = document.getElementById('side-label');
+    const cardEl = document.getElementById('card');
+    const btnRight = document.getElementById('btn-right');
+    const btnWrong = document.getElementById('btn-wrong');
+    const reshuffleBtn = document.getElementById('reshuffle-btn');
+    const statCorrect = document.getElementById('stat-correct');
+    const statWrong = document.getElementById('stat-wrong');
+    const statPos = document.getElementById('stat-pos');
+    const statTotal = document.getElementById('stat-total');
+
+    function shuffle(arr) {
+      const a = arr.slice();
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
+
+    function render() {
+      const c = deck[pos];
+      hanziEl.textContent = c.hanzi;
+      pinyinEl.textContent = c.pinyin;
+      englishEl.textContent = c.english;
+      englishEl.style.display = flipped ? 'block' : 'none';
+      hanziEl.style.display = flipped ? 'none' : 'block';
+      pinyinEl.style.display = flipped ? 'none' : 'block';
+      sideLabel.textContent = flipped ? 'English' : 'Mandarin';
+      btnRight.disabled = !flipped;
+      btnWrong.disabled = !flipped;
+      statCorrect.textContent = correct;
+      statWrong.textContent = wrong;
+      statPos.textContent = (pos + 1);
+      statTotal.textContent = deck.length;
+    }
+
+    function flip() {
+      flipped = !flipped;
+      render();
+    }
+
+    function next(wasCorrect) {
+      if (wasCorrect) correct++;
+      else wrong++;
+      pos = (pos + 1) % deck.length;
+      flipped = false;
+      render();
+    }
+
+    function reshuffle() {
+      deck = shuffle(CARDS);
+      pos = 0;
+      flipped = false;
+      correct = 0;
+      wrong = 0;
+      render();
+    }
+
+    cardEl.addEventListener('click', flip);
+    btnRight.addEventListener('click', () => next(true));
+    btnWrong.addEventListener('click', () => next(false));
+    reshuffleBtn.addEventListener('click', reshuffle);
+
+    reshuffle();
+  </script>
+
+</body>
+</html>

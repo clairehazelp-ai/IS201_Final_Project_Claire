@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<!-- Claire Pothier | IS 201 Final Project | From-Scratch Page | April 2026 -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claire's Travel Journal</title>
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <link rel="stylesheet" href="css/scratch.css">
+</head>
+<body>
+
+  <header id="topbar">
+    <div class="brand">
+      <span class="mark">C.P.</span>
+      <span class="brand-sub">Travel Journal</span>
+    </div>
+    <nav id="topnav" aria-label="Section navigation">
+      <a href="#trips">Trips</a>
+      <a href="#video">Film</a>
+      <a href="#tableau">Data</a>
+      <a href="#app-link">App</a>
+      <a href="index.html" class="nav-home">Home</a>
+    </nav>
+  </header>
+
+  <section id="intro">
+    <span class="kicker">From-Scratch &middot; No Bootstrap</span>
+    <h1>Passport, laptop, one backpack.</h1>
+    <p class="sub">Living in the Netherlands, serving in Sydney, leading youth through Hong Kong &mdash; three trips that made me who I am, plus the data and video to go with them.</p>
+    <div class="stat-band">
+      <div class="stat"><b>3</b><span>countries lived in</span></div>
+      <div class="stat"><b>18</b><span>months in Sydney</span></div>
+      <div class="stat"><b>5</b><span>weeks in Hong Kong</span></div>
+      <div class="stat"><b>&infin;</b><span>countries on the list</span></div>
+    </div>
+  </section>
+
+  <section id="trips-section">
+    <h2 id="trips">Three trips that stuck with me</h2>
+    <p class="note">Ranked, with a few notes on each.</p>
+
+    <ol class="trip-grid">
+      <li class="trip-card">
+        <div class="trip-photo">
+          <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=700&q=70" alt="Sydney skyline">
+          <span class="trip-pin">01</span>
+        </div>
+        <div class="trip-body">
+          <h3>Sydney, Australia</h3>
+          <span class="trip-dates">Sep 2023 &ndash; Feb 2025</span>
+          <ul>
+            <li>Lived and served there for 18 months</li>
+            <li>Built a Facebook group to reach the local Chinese community and ran events in Mandarin</li>
+            <li>Bondi to Coogee walk is still my favorite thing I've ever done on a coastline</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="trip-card">
+        <div class="trip-photo">
+          <img src="https://images.unsplash.com/photo-1536599018102-9f803c140fc1?auto=format&fit=crop&w=700&q=70" alt="Hong Kong night skyline">
+          <span class="trip-pin">02</span>
+        </div>
+        <div class="trip-body">
+          <h3>Hong Kong, China</h3>
+          <span class="trip-dates">Jun 2025 &ndash; Aug 2025</span>
+          <ul>
+            <li>Led a group of youth on a 5-week humanitarian trip with HXP</li>
+            <li>Coordinated schedules, service projects, and logistics in a fast-paced environment</li>
+            <li>Night markets, dim sum, and the Star Ferry were all worth the jet lag</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="trip-card">
+        <div class="trip-photo">
+          <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=700&q=70" alt="European cafe street">
+          <span class="trip-pin">03</span>
+        </div>
+        <div class="trip-body">
+          <h3>Maastricht, Netherlands</h3>
+          <span class="trip-dates">Jul 2021 &ndash; Aug 2021</span>
+          <ul>
+            <li>Interned for Fly By Night Press, an international book publisher</li>
+            <li>Tiny, walkable European city with great cafes on every corner</li>
+            <li>Easy train rides to Paris, Brussels, and Amsterdam on the weekends</li>
+          </ul>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section id="media-row">
+    <div class="media-text">
+      <h2 id="video">A travel short I love</h2>
+      <p>A short film about why people travel and what they bring home with them. If you've ever come back from a trip and felt a little different, watch this.</p>
+      <span class="tag">Video &middot; ~5 min</span>
+    </div>
+    <div class="media-frame">
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/DKN5XR1TwXs"
+        title="Travel short film"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </section>
+
+  <section id="tableau-section">
+    <h2 id="tableau">Data: Most Visited Countries</h2>
+    <p>Live, interactive Tableau Public dashboard on global tourism. Hover and click to filter &mdash; it's the real viz, not a screenshot.</p>
+    <div class="tableau-wrap">
+      <div class='tableauPlaceholder' id='viz-travel' style='position: relative'>
+        <noscript>
+          <a href='https://public.tableau.com/views/WorldTourism2024/Dashboard1'><img alt='World Tourism Dashboard' src='https://public.tableau.com/static/images/Wo/WorldTourism2024/Dashboard1/1_rss.png' style='border: none' /></a>
+        </noscript>
+        <object class='tableauViz' style='display:none;'>
+          <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+          <param name='embed_code_version' value='3' />
+          <param name='site_root' value='' />
+          <param name='name' value='WorldTourism2024/Dashboard1' />
+          <param name='tabs' value='no' />
+          <param name='toolbar' value='yes' />
+          <param name='static_image' value='https://public.tableau.com/static/images/Wo/WorldTourism2024/Dashboard1/1.png' />
+          <param name='animate_transition' value='yes' />
+          <param name='display_static_image' value='yes' />
+          <param name='display_spinner' value='yes' />
+          <param name='display_overlay' value='yes' />
+          <param name='display_count' value='yes' />
+          <param name='language' value='en-US' />
+        </object>
+      </div>
+      <script type='text/javascript'>
+        var divElement = document.getElementById('viz-travel');
+        var vizElement = divElement.getElementsByTagName('object')[0];
+        vizElement.style.width = '100%';
+        vizElement.style.height = '800px';
+        var scriptElement = document.createElement('script');
+        scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+        vizElement.parentNode.insertBefore(scriptElement, vizElement);
+      </script>
+    </div>
+  </section>
+
+  <section id="app-cta-band">
+    <div class="cta-inner">
+      <h2 id="app-link">Try my Mandarin flashcards</h2>
+      <p>20 basic Mandarin words with pinyin, English, and a quick score tracker. Good for a minute between classes.</p>
+      <a class="cta-btn" href="app.html">Open the app &rarr;</a>
+    </div>
+  </section>
+
+  <footer id="page-foot">
+    Claire Pothier &middot; IS 201 Final Project &middot;
+    <a href="index.html">Resume</a> &middot;
+    <a href="projects.html">Projects</a> &middot;
+    <a href="app.html">Mandarin Flashcards</a>
+  </footer>
+
+</body>
+</html>
